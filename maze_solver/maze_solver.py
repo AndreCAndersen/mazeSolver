@@ -6,11 +6,11 @@ import pygame.gfxdraw
 
 class MazeSolver:
 
-    def __init__(self):
-        self.mazeImage = Image.open('maze_small.png')
-        self.pix = self.mazeImage.load()
-        self.width = self.mazeImage.size[0]
-        self.height = self.mazeImage.size[1]
+    def __init__(self, maze_image_file):
+        self.maze_image = Image.open(maze_image_file)
+        self.pix = self.maze_image.load()
+        self.width = self.maze_image.size[0]
+        self.height = self.maze_image.size[1]
         self.maze = list()
         self.solution = list()
         self.was_here = list()
@@ -98,7 +98,7 @@ class MazeSolver:
     def print_image(self):
         for x in self.solution:
             self.pix[x[1], x[0]] = (255, 0, 0)
-        self.mazeImage.save("mazeSol.png")
+        self.maze_image.save("maze_solution.png")
 
     def visualise(self):
         pygame.init()
